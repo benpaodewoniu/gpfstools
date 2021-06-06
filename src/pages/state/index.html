@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>多节点状态查询</title>
+</head>
+<body>
+<h1>多节点状态查询</h1>
+<div class="container">
+    <div class="row">
+        <label>输入地址「一行一个」</label>
+        <textarea id="addresses" rows="10" style="width: 100%"></textarea>
+        <button type="button" class="btn btn-outline-primary" id="submit" style="margin-top: 10px">提交</button>
+    </div>
+
+    <ul style="margin-top: 20px">
+        <li id="pdout">已兑换</li>
+        <li id="pdin">未兑换</li>
+        <li id="all">全部GPS</li>
+    </ul>
+    <h2 style="margin-top: 40px;margin-bottom: 40px">在线</h2>
+    <table class="table" style="margin-top: 10px">
+        <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">地址</th>
+            <th scope="col">算力</th>
+            <th scope="col">总额</th>
+            <th scope="col">已兑换</th>
+            <th scope="col">未兑换</th>
+            <th scope="col">状态</th>
+        </tr>
+        </thead>
+        <tbody id="online">
+        </tbody>
+    </table>
+
+    <h2 style="margin-top: 40px;margin-bottom: 40px">离线</h2>
+    <table class="table" style="margin-top: 10px">
+        <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">地址</th>
+            <th scope="col">算力</th>
+            <th scope="col">总额</th>
+            <th scope="col">已兑换</th>
+            <th scope="col">未兑换</th>
+            <th scope="col">状态</th>
+        </tr>
+        </thead>
+        <tbody id="outline">
+        </tbody>
+    </table>
+
+    <h2 style="margin-top: 40px;margin-bottom: 40px">未找到</h2>
+    <table class="table" style="margin-top: 10px">
+        <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">地址</th>
+            <th scope="col">算力</th>
+            <th scope="col">总额</th>
+            <th scope="col">已兑换</th>
+            <th scope="col">未兑换</th>
+            <th scope="col">状态</th>
+        </tr>
+        </thead>
+        <tbody id="notfind">
+        </tbody>
+    </table>
+</div>
+</body>
+</html>

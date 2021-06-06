@@ -1,0 +1,5 @@
+release.sh
+node_modules
+dist
+*tar.gz
+.idea
