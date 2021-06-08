@@ -82,7 +82,7 @@ $("#submit").click(() => {
                     let amount = data['amount'];
                     let amount_16 = w3.utils.toHex(amount)
                     let paidout = data['paid_out']
-                    let paidin = parseFloat(amount) - parseFloat(paidout)
+                    let paidin = (parseFloat(amount) - parseFloat(paidout)) / 10000
                     let signature = data['signature']
                     let signature_16 = "0x" + signature
 
