@@ -73,7 +73,19 @@ module.exports = {
                 use: [{
                     loader: 'html-loader'
                 }]
-            }
+            },
+            {
+                test: /\.ejs$/,
+                use: [
+                    {
+                        loader: 'ejs-loader',
+                        options: {
+                            esModule: false,
+                            variable: 'data',
+                        },
+                    },
+                ],
+            },
         ]
     },
     plugins: [
@@ -87,35 +99,35 @@ module.exports = {
         new CleanWebpackPlugin(),
         new HtmlWebpackPlugin(
             {
-                template: './src/pages/index/index.html',
+                template: './src/pages/index/index.ejs',
                 filename: "index.html",
                 chunks: ['index']
             }
         ),
         new HtmlWebpackPlugin(
             {
-                template: './src/pages/state/index.html',
+                template: './src/pages/state/index.ejs',
                 filename: "state.html",
                 chunks: ['state'],
             }
         ),
         new HtmlWebpackPlugin(
             {
-                template: './src/pages/moreport/index.html',
+                template: './src/pages/moreport/index.ejs',
                 filename: "moreport.html",
                 chunks: ['moreport'],
             }
         ),
         new HtmlWebpackPlugin(
             {
-                template: './src/pages/multicash/index.html',
+                template: './src/pages/multicash/index.ejs',
                 filename: "multicash.html",
                 chunks: ['multicash'],
             }
         ),
         new HtmlWebpackPlugin(
             {
-                template: './src/pages/collection/index.html',
+                template: './src/pages/collection/index.ejs',
                 filename: "collection.html",
                 chunks: ['collection'],
             }
