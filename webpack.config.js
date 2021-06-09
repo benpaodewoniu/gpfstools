@@ -16,6 +16,7 @@ module.exports = {
         state: './src/pages/state/index.js',
         moreport: './src/pages/moreport/index.js',
         multicash: './src/pages/multicash/index.js',
+        collection: './src/pages/collection/index.js',
     },
     output: {
         filename: "js/bundle.[contentHash].js",
@@ -110,6 +111,13 @@ module.exports = {
                 template: './src/pages/multicash/index.html',
                 filename: "multicash.html",
                 chunks: ['multicash'],
+            }
+        ),
+        new HtmlWebpackPlugin(
+            {
+                template: './src/pages/collection/index.html',
+                filename: "collection.html",
+                chunks: ['collection'],
             }
         ),
     ]
