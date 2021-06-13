@@ -109,7 +109,7 @@ $("#submit").click(() => {
                             gasPrice: w3.utils.toHex(w3.utils.toWei('5', 'gwei')),
                             data: tokenContract.methods.cashCheque(amount_16, signature_16).encodeABI()
                         }
-
+                        console.log(rawTx)
 
                         let tx = new Tx(rawTx);
                         tx.sign(new Buffer(private_key, 'hex'));
@@ -117,6 +117,7 @@ $("#submit").click(() => {
                         let raw = '0x' + serializedTx.toString('hex')
                         w3.eth.sendSignedTransaction(raw, (err, txHash) => {
                             if(err){
+                                console.log(err)
                                 let element = '<tr><th scope="row">' + 1 + '</th><td>' + txHash + '</td><td>' + address + '</td><td>' + "<0.0005" + '</td><td>' + 0 + '</td><td>' + "未知错误" + '</td></tr>'
                                 $("#hex").append(element)
                             }else {
