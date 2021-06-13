@@ -11,3 +11,9 @@ h1 {
     text-align: center;
     margin: auto;
 }
+
+.sub-title{
+    color: gray;
+    margin-top: 10px;
+    text-align: center;
+}

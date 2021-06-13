@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>地址集</title>
+</head>
+<body>
+<%= require('@pages/common/public/user_header.ejs')() %>
+<h1>地址集</h1>
+<div class="container">
+    <div class="row">
+        <label>输入地址「一行一个，提交全部替换」</label>
+        <textarea id="addresses" rows="10" style="width: 100%"></textarea>
+        <button type="button" class="btn btn-outline-primary" id="submit" style="margin-top: 10px">提交</button>
+    </div>
+    <table class="table" style="margin-top: 10px">
+        <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">地址</th>
+        </tr>
+        </thead>
+        <tbody id="addresses">
+        </tbody>
+    </table>
+</div>
+</body>
+</html>

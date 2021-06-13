@@ -3,6 +3,7 @@ const webpack = require('webpack');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const {CleanWebpackPlugin} = require('clean-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin')
 
 module.exports = {
     resolve: {
@@ -17,6 +18,11 @@ module.exports = {
         moreport: './src/pages/moreport/index.js',
         multicash: './src/pages/multicash/index.js',
         collection: './src/pages/collection/index.js',
+        version: './src/pages/version/index.js',
+
+        login: './src/pages/login/index.js',
+        user: './src/pages/user/index.js',
+        useraddresses: './src/pages/useraddresses/index.js',
     },
     output: {
         filename: "js/bundle.[contentHash].js",
@@ -96,6 +102,12 @@ module.exports = {
         new MiniCssExtractPlugin({
             filename: 'css/style.[name].[contentHash].css',
         }),
+        new CopyWebpackPlugin([
+            {
+                from: 'src/static',	// 原始目录
+                to: 'static',	// 输出目录
+            }
+        ]),
         new CleanWebpackPlugin(),
         new HtmlWebpackPlugin(
             {
@@ -130,6 +142,34 @@ module.exports = {
                 template: './src/pages/collection/index.ejs',
                 filename: "collection.html",
                 chunks: ['collection'],
+            }
+        ),
+        new HtmlWebpackPlugin(
+            {
+                template: './src/pages/login/index.ejs',
+                filename: "login.html",
+                chunks: ['login'],
+            }
+        ),
+        new HtmlWebpackPlugin(
+            {
+                template: './src/pages/user/index.ejs',
+                filename: "user.html",
+                chunks: ['user'],
+            }
+        ),
+        new HtmlWebpackPlugin(
+            {
+                template: './src/pages/useraddresses/index.ejs',
+                filename: "useraddresses.html",
+                chunks: ['useraddresses'],
+            }
+        ),
+        new HtmlWebpackPlugin(
+            {
+                template: './src/pages/version/index.ejs',
+                filename: "version.html",
+                chunks: ['version'],
             }
         ),
     ]

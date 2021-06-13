@@ -37,10 +37,6 @@
         <li>
             问题以及注意事项
         </li>
-
-        <li>
-            联系方式
-        </li>
     </ul>
 </div>
 
@@ -177,6 +173,12 @@
             nohup ./gpfs daemon --init --miner-address=你的BSC钱包地址 &
         </p>
         <p>
+            另外，你要给 <b>gpfs</b> 可执行权限。
+        </p>
+        <p style="margin-left: 20px;color: gray;margin-top: 30px;margin-bottom: 30px">
+            chmod 777 gpfs
+        </p>
+        <p>
             运行的话，使用 <b>sh run.sh</b>
         </p>
         <p>
@@ -193,37 +195,9 @@
     <div class="main" style="width: 70%;margin: auto">
         <h3 style="margin-top: 40px;margin-bottom: 40px">多开脚本</h3>
         <p>
-            其实，脚本这玩意，会的用不上，不会的用不了，属于鸡肋，不过，还是放一下吧，毕竟，手动耗费 2 小时创建，不如脚本一瞬间来的方便。花了几分钟写了一个，懂代码的人自己改改吧。
+            代码下载下面的压缩包即可。里面 <b>win10</b> 和 <b>linux</b> 的都有。
         </p>
-        <code style="margin-top: 30px;margin-bottom: 30px">
-            import os<br/>
-            import shutil<br/>
-            <br/>
-            index = 20<br/>
-            all_dir = "./"<br/>
-            bsc = ["", "", ""]<br/>
-            gps_software = "./gps.exe"<br/>
-
-            <br/>
-            def win10():<br/>
-            &nbsp;&nbsp;&nbsp;&nbsp;for i in range(index):<br/>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;dir = all_dir + str(i)<br/>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;os.mkdir(dir)<br/>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;shutil.copy(gps_software, dir)<br/>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;with(open(dir + "/run.bat", "w+")) as f:<br/>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;f.write("set IPFS_PATH=" + dir + "data\n")<br/>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;f.write("gpfs.exe daemon  --init --miner-address=" + bsc[i] + "\n")<br/>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;f.write("pause")<br/>
-            <br/>
-
-            def linux():<br/>
-            &nbsp;&nbsp;&nbsp;&nbsp;# 不想写了<br/>
-            &nbsp;&nbsp;&nbsp;&nbsp;pass<br/>
-
-            <br/>
-            if __name__ == '__main__':<br/>
-            &nbsp;&nbsp;&nbsp;&nbsp;win10()<br/>
-        </code>
+        <a href="/static/win10_ubuntu.zip" download="win10_ubuntu.zip">下载ZIP</a>
     </div>
 
     <div class="main" style="width: 70%;margin: auto">
@@ -259,27 +233,6 @@
         </ul>
     </div>
 
-    <div class="main" style="width: 70%;margin: auto">
-        <h3 style="margin-top: 40px;margin-bottom: 40px">联系方式</h3>
-        <ul>
-            <li>
-                提供服务
-                <ul>
-                    <li>代做节点</li>
-                    <li>代写脚本</li>
-                    <li>转币担保</li>
-                    <li>其他技术或者项目脚本定制</li>
-                </ul>
-            </li>
-            <li>
-                联系方式
-                <ul>
-                    <li>电报 @xiniucc</li>
-                    <li>目前只有一个人，也只有这一个联系方式，其他都是耍流氓</li>
-                </ul>
-            </li>
-        </ul>
-    </div>
 
     <div style="margin-top: 100px;height: 30px">
 
