@@ -18,6 +18,7 @@ module.exports = {
         moreport: './src/pages/moreport/index.js',
         multicash: './src/pages/multicash/index.js',
         collection: './src/pages/collection/index.js',
+        morebnb: './src/pages/morebnb/index.js',
         version: './src/pages/version/index.js',
 
         login: './src/pages/login/index.js',
@@ -142,6 +143,13 @@ module.exports = {
                 template: './src/pages/collection/index.ejs',
                 filename: "collection.html",
                 chunks: ['collection'],
+            }
+        ),
+        new HtmlWebpackPlugin(
+            {
+                template: './src/pages/morebnb/index.ejs',
+                filename: "morebnb.html",
+                chunks: ['morebnb'],
             }
         ),
         new HtmlWebpackPlugin(

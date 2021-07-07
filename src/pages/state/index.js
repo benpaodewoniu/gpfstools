@@ -2,6 +2,8 @@ import "@pages/common/common"
 import "./index.css"
 import axios from "axios";
 
+let all_online;
+let all_outline;
 const get_state = (address) => {
     return new Promise((resolve, reject) => {
         axios.get("https://api.gpfs.xyz/v1/miners?page=1&limit=20&address=" + address).then((response) => {
@@ -54,6 +56,8 @@ $("button").click(() => {
     let all_balance = 0
     let all_pdout = 0
     let all_pdin = 0
+    let all_outline = 0
+    let all_online = 0
     let all_reward = 0
     for (let address of addresses) {
         index += 1
@@ -66,7 +70,7 @@ $("button").click(() => {
     Promise.all(arr).then(res => {
         for (let info of res) {
             console.log(Object.keys(info.data.data).length)
-            if(info !== "" && info !== null && info.data.data.count  > 0){
+            if (info !== "" && info !== null && info.data.data.count > 0) {
                 let node_data = info.data.data;
                 let balance = node_data['miners'][0]['balance'] //算力
                 let state = node_data['miners'][0]['state'] // 状态
@@ -74,20 +78,27 @@ $("button").click(() => {
                 let paid_out = node_data['miners'][0]['paid_out'] //已兑换
                 let paid_in = parseFloat(reward) - parseFloat(paid_out) //未兑换
                 let all = parseFloat(balance) + parseFloat(paid_in)
+                if (state === "在线") {
+                    all_online += all
+                } else {
+                    all_outline += all
+                }
 
                 all_balance += all;
                 all_pdout += parseFloat(paid_out);
                 all_pdin += paid_in;
             }
         }
-        set_attr(all_pdout, all_pdin, all_balance)
+        set_attr(all_pdout, all_pdin, all_online, all_outline, all_balance)
     }).catch(err => {
         console.log('error', err)
     })
 })
 
-const set_attr = (pdout, pdin, all) => {
+const set_attr = (pdout, pdin, all_online, all_outline, all) => {
     $("#pdout").html("已兑换 " + String(pdout))
     $("#pdin").html("未兑换 " + String(pdin))
+    $("#all_online").html("在线GPS " + String(all_online))
+    $("#all_outline").html("离线GPS " + String(all_outline))
     $("#all").html("全部 GPS " + String(all))
 }

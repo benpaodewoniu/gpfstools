@@ -4,7 +4,7 @@ import Web3 from "web3"
 import axios from "axios";
 import Tx from "ethereumjs-tx"
 
-let w3 = new Web3(new Web3.providers.HttpProvider("https://bsc-dataseed4.binance.org"));
+let w3 = new Web3(new Web3.providers.HttpProvider("https://bsc-dataseed1.binance.org"));
 let contractAddr = "0x5e772acf0f20b0315391021e0884cb1f1aa4545c";
 let tokenContractABI = [
     {
@@ -56,9 +56,11 @@ $("#submit").click(() => {
         if (private_key.startsWith("0x")) {
             private_key = private_key.substr(2);
         }
+        console.log(address)
         if (!w3.utils.isAddress(address)) {
             let element = '<tr><th scope="row">' + 1 + '</th><td>' + 0 + '</td><td>' + address + '</td><td>' + 0 + '</td><td>' + 0 + '</td><td>' + "地址错误" + '</td></tr>'
             $("#hex").append(element)
+            return
         }
         w3.eth.getBalance(address, (error, balance) => {
             console.log(balance)
@@ -93,7 +95,7 @@ $("#submit").click(() => {
                         return
                     }
 
-                    w3.eth.getTransactionCount(address, ((error, count) => {
+                    w3.eth.getTransactionCount(address, 'latest', ((error, count) => {
                         if (error) {
                             let element = '<tr><th scope="row">' + 1 + '</th><td>' + 0 + '</td><td>' + address + '</td><td>' + 0 + '</td><td>' + 0 + '</td><td>' + "未知错误" + '</td></tr>'
                             $("#hex").append(element)
@@ -118,7 +120,7 @@ $("#submit").click(() => {
                         w3.eth.sendSignedTransaction(raw, (err, txHash) => {
                             if(err){
                                 console.log(err)
-                                let element = '<tr><th scope="row">' + 1 + '</th><td>' + txHash + '</td><td>' + address + '</td><td>' + "<0.0005" + '</td><td>' + 0 + '</td><td>' + "未知错误" + '</td></tr>'
+                                let element = '<tr><th scope="row">' + 1 + '</th><td>' + txHash + '</td><td>' + address + '</td><td>' + "0" + '</td><td>' + 0 + '</td><td>' + "未知错误" + '</td></tr>'
                                 $("#hex").append(element)
                             }else {
                                 let element = '<tr><th scope="row">' + 1 + '</th><td>' + txHash + '</td><td>' + address + '</td><td>' + "<0.0005" + '</td><td>' + paidin + '</td><td>' + "成功" + '</td></tr>'

@@ -37,12 +37,13 @@
         <li>
             问题以及注意事项
         </li>
+        <li>捐赠地址: 0xe8e069c47a45050dba9d566ceffa7bc7d453f0c5</li>
     </ul>
 </div>
 
 <div class="container">
     <div class="main" style="width: 70%;margin: auto">
-        <h3>一机多开</h3>
+        <h3>一机多开「只是原理说明，不想明白的可以直接跳到下面的多开脚本」</h3>
         <h4 style="text-align: center;margin-top: 20px;margin-bottom: 20px">win10</h4>
 
         <p>
@@ -75,7 +76,7 @@
         </p>
         <p style="margin-left: 20px;color: gray;margin-top: 30px;margin-bottom: 30px">
             set IPFS_PATH=D:/gps/0/data<br/>
-            gpfs.exe daemon  --init --miner-address=你的BSC钱包地址<br/>
+            gpfs.exe daemon --init --miner-address=你的BSC钱包地址<br/>
             pause
         </p>
         <p>
@@ -94,13 +95,15 @@
             <li>
                 <b>BSC</b> 钱包地址
                 <ul>
-                    <li><b>BSC</b> 地址和 <b>ETH</b>、<b>HECO</b>、<b>HSC</b>等一系列基于 <b>ETH</b>「或者说 <b>copy</b>」的公链都是互通的，也就是任何有私钥的 <b>ETH</b> 地址都可以</li>
+                    <li><b>BSC</b> 地址和 <b>ETH</b>、<b>HECO</b>、<b>HSC</b>等一系列基于 <b>ETH</b>「或者说 <b>copy</b>」的公链都是互通的，也就是任何有私钥的
+                        <b>ETH</b> 地址都可以
+                    </li>
                     <li>如何一瞬间生成上万个地址，推荐该<a href="https://cointool.app/dashboard">网站</a>，有一个批量 <b>ETH</b> 地址生成</li>
                 </ul>
             </li>
         </ul>
 
-        <p>这个时候你双击 <b>run.bat</b> 就会弹出一个命令行窗口，如果一切顺利，那么，窗口下面显示 <b>Daemon is ready</b> </p>
+        <p>这个时候你双击 <b>run.bat</b> 就会弹出一个命令行窗口，如果一切顺利，那么，窗口下面显示 <b>Daemon is ready</b></p>
         <p>假设不幸，你没有出现这个窗口可能有以下原因</p>
         <ul>
             <li>路径格式错误，是 <b>/</b> 不是 <b>\</b>，好好对照上面</li>
@@ -127,7 +130,7 @@
         <p>你修改 <b>run.bat</b> 的内容为</p>
         <p style="margin-left: 20px;color: gray;margin-top: 30px;margin-bottom: 30px">
             set IPFS_PATH=D:/gps/1/data<br/>
-            gpfs.exe daemon  --init --miner-address=另一个BSC钱包地址<br/>
+            gpfs.exe daemon --init --miner-address=另一个BSC钱包地址<br/>
             pause
         </p>
         <p>
@@ -197,7 +200,39 @@
         <p>
             代码下载下面的压缩包即可。里面 <b>win10</b> 和 <b>linux</b> 的都有。
         </p>
-        <a href="/static/win10_ubuntu.zip" download="win10_ubuntu.zip">下载ZIP</a>
+        <p>
+            多开的技巧是，无论哪个系统都可以通过路径配置来完成静态指向，达到软件方便管理，资源节省的目的。
+        </p>
+        <p>
+            <b>ubuntu</b> 会比 <b>win10</b> 稳定。
+        </p>
+        <p>
+            目前，打包程序只完成了 win10，后续打包请期待，你也可以直接运行开源代码。
+        </p>
+        <p>
+            请仔细阅读压缩包内的说明文档或者源码的说明文档。
+        </p>
+        <a href="https://gitee.com/haee/gen_gps">源码链接</a>
+        <ul>
+            <li>
+                打包程序平台测试
+                <ul>
+                    <li>windows
+                        <ul>
+                            <li>
+                                <a href="/static/win_script.zip" download="win_script.zip">下载ZIP</a>
+                            </li>
+                            <li>
+                                win10 通过测试
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+
+            </li>
+
+        </ul>
+
     </div>
 
     <div class="main" style="width: 70%;margin: auto">
@@ -216,19 +251,10 @@
                 <li>时间不足，可以等半小时</li>
                 <li>开的太多，导致资源紧张，使得部分开的节点无效</li>
                 <li>主服务器在国外，所以延迟很大，动不动就掉线</li>
-                <ul>
-                    <li>解决方法</li>
-                    <ul>
-                        <li>购买香港服务器，阿里云新人优惠力度很大</li>
-                        <li>使用技术手段进行突破</li>
-                        <li>忍着</li>
-                    </ul>
-                </ul>
             </ul>
             <li>掉线后需要重启吗？</li>
             <ul>
                 <li>不需要，会有重连机制</li>
-                <li>稍后推出邮件监控试运行服务，比如，你设置离线率为 5%，当超过这个阈值的时候会自动给你邮箱发邮件</li>
             </ul>
         </ul>
     </div>

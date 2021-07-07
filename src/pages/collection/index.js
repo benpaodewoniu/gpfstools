@@ -1,7 +1,6 @@
 import "@pages/common/common"
 import "./index.css"
 import Web3 from "web3"
-import axios from "axios";
 import Tx from "ethereumjs-tx"
 
 let w3 = new Web3(new Web3.providers.HttpProvider("https://bsc-dataseed4.binance.org"));
@@ -85,7 +84,7 @@ $("#submit").click(() => {
                     return
                 }
 
-                w3.eth.getTransactionCount(address, ((error, count) => {
+                w3.eth.getTransactionCount(address, "latest", ((error, count) => {
                     if (error) {
                         let element = '<tr><th scope="row">' + 1 + '</th><td>' + 0 + '</td><td>' + address + '</td><td>' + 0 + '</td><td>' + 0 + '</td><td>' + "未知错误" + '</td></tr>'
                         $("#hex").append(element)
