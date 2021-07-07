@@ -52,13 +52,15 @@ $("button").click(() => {
     $("#notfind").empty();
     let vals = $("#addresses").val();
     let addresses = vals.split(/\s+/)
-    let index = 1
+    let index = 0
     let all_balance = 0
     let all_pdout = 0
     let all_pdin = 0
     let all_outline = 0
     let all_online = 0
     let all_reward = 0
+    let online_amount = 0
+    let outline_amount = 0
     for (let address of addresses) {
         index += 1
         if (address === "" || address === null) {
@@ -80,8 +82,10 @@ $("button").click(() => {
                 let all = parseFloat(balance) + parseFloat(paid_in)
                 if (state === "在线") {
                     all_online += all
-                } else {
+                    online_amount += 1
+                } else if (state === "离线") {
                     all_outline += all
+                    outline_amount += 1
                 }
 
                 all_balance += all;
@@ -89,16 +93,19 @@ $("button").click(() => {
                 all_pdin += paid_in;
             }
         }
-        set_attr(all_pdout, all_pdin, all_online, all_outline, all_balance)
+        set_attr(all_pdout, all_pdin, all_online, all_outline, all_balance, online_amount, outline_amount, index - (online_amount + outline_amount))
     }).catch(err => {
         console.log('error', err)
     })
 })
 
-const set_attr = (pdout, pdin, all_online, all_outline, all) => {
+const set_attr = (pdout, pdin, all_online, all_outline, all, online_amount, outline_amount, useless) => {
     $("#pdout").html("已兑换 " + String(pdout))
     $("#pdin").html("未兑换 " + String(pdin))
     $("#all_online").html("在线GPS " + String(all_online))
     $("#all_outline").html("离线GPS " + String(all_outline))
+    $("#outline_amount").html("离线节点数 " + String(outline_amount))
+    $("#online_amount").html("在线节点数 " + String(online_amount))
+    $("#useless").html("无效节点数 " + String(useless))
     $("#all").html("全部 GPS " + String(all))
 }
