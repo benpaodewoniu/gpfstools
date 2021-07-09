@@ -20,6 +20,13 @@ module.exports = {
         collection: './src/pages/collection/index.js',
         morebnb: './src/pages/morebnb/index.js',
         version: './src/pages/version/index.js',
+        kline: './src/pages/kline/index.js',
+        bnbstate: './src/pages/bnbstate/index.js',
+        moregps: './src/pages/moregps/index.js',
+        pi: './src/pages/pi/index.js',
+        pancake: './src/pages/pancake/index.js',
+        upload: './src/pages/upload/index.js',
+        other: './src/pages/other/index.js',
 
         login: './src/pages/login/index.js',
         user: './src/pages/user/index.js',
@@ -178,6 +185,55 @@ module.exports = {
                 template: './src/pages/version/index.ejs',
                 filename: "version.html",
                 chunks: ['version'],
+            }
+        ),
+        new HtmlWebpackPlugin(
+            {
+                template: './src/pages/kline/index.ejs',
+                filename: "kline.html",
+                chunks: ['kline'],
+            }
+        ),
+        new HtmlWebpackPlugin(
+            {
+                template: './src/pages/bnbstate/index.ejs',
+                filename: "bnbstate.html",
+                chunks: ['bnbstate'],
+            }
+        ),
+        new HtmlWebpackPlugin(
+            {
+                template: './src/pages/moregps/index.ejs',
+                filename: "moregps.html",
+                chunks: ['moregps'],
+            }
+        ),
+        new HtmlWebpackPlugin(
+            {
+                template: './src/pages/pi/index.ejs',
+                filename: "pi.html",
+                chunks: ['pi'],
+            }
+        ),
+        new HtmlWebpackPlugin(
+            {
+                template: './src/pages/pancake/index.ejs',
+                filename: "pancake.html",
+                chunks: ['pancake'],
+            }
+        ),
+        new HtmlWebpackPlugin(
+            {
+                template: './src/pages/upload/index.ejs',
+                filename: "upload.html",
+                chunks: ['upload'],
+            }
+        ),
+        new HtmlWebpackPlugin(
+            {
+                template: './src/pages/other/index.ejs',
+                filename: "other.html",
+                chunks: ['other'],
             }
         ),
     ]

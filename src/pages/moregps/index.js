@@ -8,7 +8,7 @@ let w3 = new Web3(new Web3.providers.HttpProvider("https://bsc-dataseed1.binance
 
 let ncount = 0;
 
-const sendbnb = (privatekey, val, address) => {
+const sendgps = (privatekey, val, address) => {
     let publicaddress = "0x" + privateToAddress(new Buffer(privatekey, 'hex')).toString('hex')
     w3.eth.getBalance(publicaddress, ((error, balance) => {
         if (error) {

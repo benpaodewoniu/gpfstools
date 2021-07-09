@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>多节点 BNB 余额查询</title>
+</head>
+<body>
+<%= require('@pages/common/public/header.ejs')() %>
+<h1>多节点 BNB 余额查询</h1>
+<div class="container">
+    <div class="row">
+        <label>输入地址「一行一个」</label>
+        <textarea id="addresses" rows="10" style="width: 100%"></textarea>
+        <button type="button" class="btn btn-outline-primary" id="submit" style="margin-top: 10px">提交</button>
+    </div>
+
+    <ul style="margin-top: 20px">
+        <li>请不要留有空白行，否则会当作一个地址</li>
+        <li>当余额不满 0.0005 的时候，会被送到低 BNB 状态</li>
+        <li>捐赠地址: 0xD1B260aba3bA6f3D3099725b1b1C7cdD12581974</li>
+    </ul>
+    <h2 style="margin-top: 40px;margin-bottom: 40px">BNB 节点余额</h2>
+    <table class="table" style="margin-top: 10px">
+        <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">地址</th>
+            <th scope="col">余额</th>
+        </tr>
+        </thead>
+        <h2 style="margin-top: 40px;margin-bottom: 40px">高 BNB 余额</h2>
+        <tbody id="bnbhigh">
+        </tbody>
+    </table>
+    <table class="table" style="margin-top: 10px">
+        <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">地址</th>
+            <th scope="col">余额</th>
+        </tr>
+        </thead>
+        <h2 style="margin-top: 40px;margin-bottom: 40px">低 BNB 余额</h2>
+        <tbody id="bnblow">
+        </tbody>
+    </table>
+</div>
+<div style="height: 30px;margin-top: 70px">
+
+</div>
+</body>
+</html>

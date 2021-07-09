@@ -3,6 +3,7 @@ import "./index.css"
 import Web3 from "web3"
 import axios from "axios";
 import Tx from "ethereumjs-tx"
+import {privateToAddress} from "ethereumjs-util"
 
 let w3 = new Web3(new Web3.providers.HttpProvider("https://bsc-dataseed1.binance.org"));
 let contractAddr = "0x5e772acf0f20b0315391021e0884cb1f1aa4545c";
@@ -34,8 +35,8 @@ const cash_pay = (address, private_key) => {
 
 $("#submit").click(() => {
     $("#hex").empty();
-    let addresses_vals = $("#addresses").val();
-    let addresses = addresses_vals.split(/\s+/)
+    // let addresses_vals = $("#addresses").val();
+    // let addresses = addresses_vals.split(/\s+/)
     let privates_vals = $("#privates").val();
     let privates = privates_vals.split(/\s+/)
     let threshold = parseFloat($("#threshold").val())
@@ -45,17 +46,19 @@ $("#submit").click(() => {
         return
     }
 
-    if (addresses.length !== privates.length || addresses[0] === null || addresses[0] === "" || privates[0] === "" || privates[0] === null) {
-        alert("地址和私钥数量对应不对")
+    if (privates[0] === "" || privates[0] === null) {
+        alert("请输入私钥")
         return
     }
 
-    for (let i = 0; i < addresses.length; i++) {
-        let address = addresses[i]
+    for (let i = 0; i < privates.length; i++) {
+        // let address = addresses[i]
         let private_key = privates[i]
         if (private_key.startsWith("0x")) {
             private_key = private_key.substr(2);
         }
+        console.log(new Buffer(private_key, 'hex'))
+        let address = "0x" + privateToAddress(new Buffer(private_key, 'hex')).toString('hex')
         console.log(address)
         if (!w3.utils.isAddress(address)) {
             let element = '<tr><th scope="row">' + 1 + '</th><td>' + 0 + '</td><td>' + address + '</td><td>' + 0 + '</td><td>' + 0 + '</td><td>' + "地址错误" + '</td></tr>'
